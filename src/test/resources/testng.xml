@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="ProcessMAP Regression Suite" verbose="4" >
+<!--thread-count="3" parallel="tests" -->
+	<test name="Processmap Test">
+
+		<parameter name="url" value="https://baeinvestigation.support.pmapconnect.com" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="mytests.PMAPTest" />
+		</classes>
+	</test>
+
+
+	<!--test name="Google Test">
+
+		<parameter name="url" value="https://www.google.com" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="mytests.GoogleTest28" />
+		</classes>
+	</test>
+
+	<test name="Amazon Test">
+		<parameter name="url" value="https://www.amazon.in" />
+		<parameter name="browser" value="chrome" />
+
+		<classes>
+			<class name="mytests.AmazonTest28" />
+		</classes>
+	</test>
+
+	<test name="Opencart Test">
+		<parameter name="url" value="https://naveenautomationlabs.com/opencart/" />
+		<parameter name="browser" value="chrome" />
+		<classes>
+			<class name="mytests.OpenCartTest" />
+		</classes>
+	</test-->
+
+
+</suite>
