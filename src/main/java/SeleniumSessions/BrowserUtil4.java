@@ -13,7 +13,7 @@ public class BrowserUtil4 {
 
 	public WebDriver launchBrowser(String BrowserName) {
 		//driver = null;
-
+		//driver = null;
 		switch (BrowserName.toLowerCase()) {
 		case "chrome":
 			driver = new ChromeDriver();
