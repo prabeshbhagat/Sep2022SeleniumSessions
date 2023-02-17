@@ -1,5 +1,6 @@
 package SeleniumSessions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -50,6 +51,70 @@ public class ElementUtil5 {
 		}
 
 	}
+	
+	
+
+	public  boolean doISDisplayedMethod(By locator) {
+		return getElement(locator).isDisplayed();
+	}
+
+	// find an element without using is displayed
+	public  boolean isSingleElementExist(By locator) {
+		int actCount = getElements(locator).size();
+		System.out.println("Actual count of element is++" + actCount);
+		if (actCount == 1) {
+			return true;
+		}
+		return false;
+	}
+
+	public  boolean isTwoElementExist(By locator) {
+		int actCount = getElements(locator).size();
+		System.out.println("Actual count of element is++" + actCount);
+		if (actCount == 2) {
+			return true;
+		}
+		return false;
+	}
+	//mutliple element not aware of actElement count
+	public  boolean isMultipleElementExist(By locator) {
+		int actCount = getElements(locator).size();
+		System.out.println("Actual count of element is++" + actCount);
+		if (actCount >1) {
+			return true;
+		}
+		return false;
+	}
+	
+	////mutliple element  aware of actElement count ,pass the count
+	public  boolean isMultipleElementExist(By locator, int actElementCount) {
+		int actCount = getElements(locator).size();
+		System.out.println("Actual count of element is++" + actCount);
+		if (actCount == actElementCount) {
+			return true;
+		}
+		return false;
+	}
+	
+	public  int totalElementsCount(By locator) {
+		return getElements(locator).size();
+	}
+
+	
+	public  List<String> getElementsTextList(By locator) {
+		List<WebElement> eleList = getElements(locator);
+		List<String> eleTextList = new ArrayList<String>();
+		System.out.println("======" + eleList.size());
+
+		for (WebElement e : eleList) {
+			String text = e.getText();
+			eleTextList.add(text);
+		}
+
+		return eleTextList;
+
+	}
+	
 
 	/**
 	 * Drop Down Utils Select Based drop downs
