@@ -6,6 +6,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 
 public class ElementUtil5 {
@@ -51,15 +52,13 @@ public class ElementUtil5 {
 		}
 
 	}
-	
-	
 
-	public  boolean doISDisplayedMethod(By locator) {
+	public boolean doISDisplayedMethod(By locator) {
 		return getElement(locator).isDisplayed();
 	}
 
 	// find an element without using is displayed
-	public  boolean isSingleElementExist(By locator) {
+	public boolean isSingleElementExist(By locator) {
 		int actCount = getElements(locator).size();
 		System.out.println("Actual count of element is++" + actCount);
 		if (actCount == 1) {
@@ -68,7 +67,7 @@ public class ElementUtil5 {
 		return false;
 	}
 
-	public  boolean isTwoElementExist(By locator) {
+	public boolean isTwoElementExist(By locator) {
 		int actCount = getElements(locator).size();
 		System.out.println("Actual count of element is++" + actCount);
 		if (actCount == 2) {
@@ -76,18 +75,19 @@ public class ElementUtil5 {
 		}
 		return false;
 	}
-	//mutliple element not aware of actElement count
-	public  boolean isMultipleElementExist(By locator) {
+
+	// mutliple element not aware of actElement count
+	public boolean isMultipleElementExist(By locator) {
 		int actCount = getElements(locator).size();
 		System.out.println("Actual count of element is++" + actCount);
-		if (actCount >1) {
+		if (actCount > 1) {
 			return true;
 		}
 		return false;
 	}
-	
-	////mutliple element  aware of actElement count ,pass the count
-	public  boolean isMultipleElementExist(By locator, int actElementCount) {
+
+	//// mutliple element aware of actElement count ,pass the count
+	public boolean isMultipleElementExist(By locator, int actElementCount) {
 		int actCount = getElements(locator).size();
 		System.out.println("Actual count of element is++" + actCount);
 		if (actCount == actElementCount) {
@@ -95,13 +95,12 @@ public class ElementUtil5 {
 		}
 		return false;
 	}
-	
-	public  int totalElementsCount(By locator) {
+
+	public int totalElementsCount(By locator) {
 		return getElements(locator).size();
 	}
 
-	
-	public  List<String> getElementsTextList(By locator) {
+	public List<String> getElementsTextList(By locator) {
 		List<WebElement> eleList = getElements(locator);
 		List<String> eleTextList = new ArrayList<String>();
 		System.out.println("======" + eleList.size());
@@ -114,7 +113,6 @@ public class ElementUtil5 {
 		return eleTextList;
 
 	}
-	
 
 	/**
 	 * Drop Down Utils Select Based drop downs
@@ -153,7 +151,7 @@ public class ElementUtil5 {
 
 	}
 
-	public  void doSelectDropDownValueWithoutUsingSelect(By dropLoc, String Val) {
+	public void doSelectDropDownValueWithoutUsingSelect(By dropLoc, String Val) {
 
 		List<WebElement> dropdownValues = driver.findElements(dropLoc);
 		System.out.println(dropdownValues.size());
@@ -183,6 +181,25 @@ public class ElementUtil5 {
 				break;
 			}
 		}
+
+	}
+	
+	//*******************************Actions Class*************************************
+
+	public void selectSubMenu(String htmlTag, String parentMenu, String childMenu) throws InterruptedException {
+
+		By parentMenuLocator = By.xpath("//" + htmlTag + "[text()='" + parentMenu + "']");
+		By childMenuLocator = By.xpath("//" + htmlTag + "[text()='" + childMenu + "']");
+
+		WebElement parent = getElement(parentMenuLocator);
+
+		Actions action = new Actions(driver);
+
+		action.moveToElement(parent).build().perform();
+
+		Thread.sleep(3000);
+
+		doClick(childMenuLocator);
 
 	}
 
