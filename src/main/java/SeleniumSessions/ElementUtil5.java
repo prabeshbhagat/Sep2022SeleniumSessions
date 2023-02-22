@@ -202,5 +202,16 @@ public class ElementUtil5 {
 		doClick(childMenuLocator);
 
 	}
+	
+	
+	public  void doActionsSendKeys(By locator,String value) {
+		Actions act = new Actions(driver);
+		act.sendKeys(getElement(locator), value).build().perform();
+	}
+	
+	public  void doActionsClick(By locator) {
+		Actions act = new Actions(driver); 
+		act.click(getElement(locator)).build().perform();
+	}
 
 }

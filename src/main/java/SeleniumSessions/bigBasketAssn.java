@@ -1,5 +1,7 @@
 package SeleniumSessions;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,13 +22,28 @@ public class bigBasketAssn {
 		Actions act = new Actions(driver);
 		act.moveToElement(shopByLocL1).build().perform();
 		
-		Thread.sleep(2000);
+
+		//ul[@id='navBarMegaNav']//a
+		List<WebElement> categoryListL3=driver.findElements(By.xpath("(//ul[@class='list-unstyled'])[3]//a"));
+		List<WebElement> categoryListL1=driver.findElements(By.xpath("//ul[@id='navBarMegaNav']//a"));
 		
-		WebElement FreshVegetables = driver.findElement(By.xpath("(//a[text()='Fresh Vegetables'])[2]"));
-		act.moveToElement(FreshVegetables).build().perform();
-		
-		Thread.sleep(2000);
-		
+		for(WebElement e:categoryListL1) {
+			
+			act.moveToElement(e).build().perform();
+			String text=e.getText();
+			System.out.println("L1 "+text);
+			Thread.sleep(3000);
+			
+			List<WebElement> categoryListL2 = driver.findElements(By.xpath("(//ul[contains(@class,'nav-pills')])[2]"));
+			for(WebElement f:categoryListL2) {
+				act.moveToElement(f).build().perform();
+				String text1=f.getText();
+				System.out.println("L2--"+text1);
+				
+			}
+			
+			
+		}
 		
 
 	}

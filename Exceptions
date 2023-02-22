@@ -1,5 +1,5 @@
 org.openqa.selenium.ElementNotInteractableException
 >>JqueryDropDownConcept9 
 
-
+NoAlertPresentException: for alerts
 org.openqa.selenium.InvalidSelectorException wrong xpath
