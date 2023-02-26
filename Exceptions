@@ -1,5 +1,26 @@
 org.openqa.selenium.ElementNotInteractableException
 >>JqueryDropDownConcept9 
 
-NoAlertPresentException: for alerts
+NoAlertPresentException: for alerts when there is no alerts and we try to work on lasert
 org.openqa.selenium.InvalidSelectorException wrong xpath
+ org.openqa.selenium.InvalidArgumentException:--FileUploadPopup13 when same xpath is given for
+ -- two different webelement
+ 
+ .ElementClickInterceptedException:
+ element click intercepted: Element is not clickable at point (63, 2086)
+ 
+ org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: move target out of bounds
+ got using action class when unable to move to element
+ 
+
+ org.openqa.selenium.NoSuchSessionException
+ Session ID is null. Using WebDriver after calling quit()?
+ 
+ 
+ StaleElementReferenceException: stale element reference:
+  element is not attached to the page document
+  
+  //amazon div//div[text()='Get to Know Us']/parent::div//li
+  
+  
+  NoSuchWindowException: no such window: target window already closed session 14
