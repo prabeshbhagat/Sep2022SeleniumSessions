@@ -1,0 +1,101 @@
+package SeleniumSessions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CustomCssSelctor18 {
+
+	public static void main(String[] args) {
+		
+		WebDriver driver =new ChromeDriver();
+		driver.get("https://app.hubspot.com/login?hubs_signup-url=www.hubspot.com/products/crm&hubs_signup-cta=homepage-nav-login&hubs_content=www.hubspot.com/products/crm&hubs_content-cta=homepage-nav-login");
+
+		// Css Selector is not an attribute
+		//its a locator in by class
+		
+		
+		//case 1:id
+		//htmltag#idvalue
+		//#idvalue
+		// #input-email
+		// input#input-email
+		
+		//case 2:class
+		//htmltag.classvalue
+		// .classvalue
+		// input.form-control
+		// .form-control
+		
+		//case 3:combination of css selector and id
+		//htmltag.classvalue#idvalue
+		//htmltag#idvalue.classvalue
+		// input.form-control#input-email
+		// .form-control
+		// input#input-email.form-control#input-email
+		
+		//for multiple class names
+		// .c1.c2
+		// input.btn.btn-primary		
+		// input.form-control.input-lg
+		
+		// .form-control.private-form__control.login-email
+		// input.login-email
+		
+		
+		//case4 ;for other attribute apart
+		//input[type='email']--css
+		//input[@type='email']--xpath
+		
+		
+		//case5:for multiple attribute
+		//input[type='email'][id='username']
+		//input[name='email'][type='text']--css 
+		//input[name='email' and type='text']--xpath
+		
+		//case6:Contains *
+		//htmltag [attr*='value']
+		// [id*='email']
+		// input[id*='email']--Contains
+		// input[id^='input']--starts with
+		// input[id$='email']--ends with
+		
+		// input[placeholder^='E-Mail'][id*='email'][class$=control]--combination of start with ends with and contains\
+		
+		//text? -no support in CSS;
+		
+		//parernt to child 
+		//ornage hrm
+		// //select[@id='Form_getForm_Country']/option--xpath
+		// select#Form_getForm_Country > option--css for direct child
+		// select#Form_getForm_Country  option-- css selector for direct and indirect child (use space instead >)
+		
+		//parent to child direct and indirect
+		// form#hs-login > div--direct div or direct child 
+		// form#hs-login  div--direct dic + indirect div count will be more
+		
+		//child to parent --backward traversing is not supported in css 
+		
+		//sibling in css
+		//preceding-sibling is not supported in css
+		// .form-group > label + input following sibling (use + sign)
+		//for sibling concept aslwyas go for xpath
+		
+		//case 7:use of comma in css
+		// input#username,input#password,button#loginBtn
+		//hub spot
+		
+		By impElemnts=By.cssSelector("input#username,input#password,button#loginBtn");
+		int size=driver.findElements(impElemnts).size();
+		if(size==3) {
+			System.out.println("Imp elements are available");
+		}else {
+			System.out.println("Imp elements are not available");
+		}
+		
+		
+		
+		
+	}
+
+}
