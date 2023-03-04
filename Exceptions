@@ -9,6 +9,15 @@ org.openqa.selenium.InvalidSelectorException wrong xpath
  .ElementClickInterceptedException:
  element click intercepted: Element is not clickable at point (63, 2086)
  
+ ElementClickInterceptedException: element click intercepted: Element 
+ <g fill="#2874F1" fill-rule="evenodd">...</g> is not clickable at point (553, 27).
+  Other element would receive the click: <svg width="20" height="20" viewBox="0 0 17 18"
+   class="" xmlns="http://www.w3.org/2000/svg">...</svg>
+ 
+ 
+ 
+ 
+ 
  org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: move target out of bounds
  got using action class when unable to move to element
  
@@ -24,3 +33,7 @@ org.openqa.selenium.InvalidSelectorException wrong xpath
   
   
   NoSuchWindowException: no such window: target window already closed session 14
+  
+  
+  org.openqa.selenium.interactions.MoveTargetOutOfBoundsException: move target out of bounds
+  19

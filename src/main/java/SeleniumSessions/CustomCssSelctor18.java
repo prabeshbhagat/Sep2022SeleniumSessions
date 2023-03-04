@@ -43,7 +43,7 @@ public class CustomCssSelctor18 {
 		// input.login-email
 		
 		
-		//case4 ;for other attribute apart
+		//case4 ;for other attribute apart from id class name 
 		//input[type='email']--css
 		//input[@type='email']--xpath
 		
@@ -79,12 +79,12 @@ public class CustomCssSelctor18 {
 		//sibling in css
 		//preceding-sibling is not supported in css
 		// .form-group > label + input following sibling (use + sign)
-		//for sibling concept aslwyas go for xpath
+		//for sibling concept always go for xpath
 		
 		//case 7:use of comma in css
 		// input#username,input#password,button#loginBtn
 		//hub spot
-		
+		//example below
 		By impElemnts=By.cssSelector("input#username,input#password,button#loginBtn");
 		int size=driver.findElements(impElemnts).size();
 		if(size==3) {
@@ -94,7 +94,28 @@ public class CustomCssSelctor18 {
 		}
 		
 		
+		//indexing in CSS 
+		//div.row ul.footer-nav >li:nth-of-type(5)
 		
+		//xPath vs CSS
+		
+		//text():xpath
+		//Syntax: css is better than xpath
+		//contains/starts-with/endswith :both
+		//conatins +text+attr--xpath
+		//starts with +text = attr--xptah is the winner
+		//backward tarversing- xpath
+		//sibling-xpath- as prescdeing sibling is not available
+		//dynamic elements firstname_123,firstname_456 with contains or anything :both
+		//comma -css
+		//indexing :xpath
+		//performance wise :both are fine (xpath has a engine)
+		//whenever a page url is passed the dom is loaded 1st than the page will be loaded
+		
+		//canvas html 5 ,graphs cannot be automated
+		
+		
+		//normalize space()
 		
 	}
 
