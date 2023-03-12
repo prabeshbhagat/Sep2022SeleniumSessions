@@ -57,7 +57,7 @@ public class WebDriverTopCastingOptions02 {
 //		
 		System.out.println("-------------------------------");
 
-		String browser1 = "ie";
+		String browser1 = "chrome";
 		switch (browser1) {
 		case "chrome":
 			System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\Selenium\\chromedriver.exe");
