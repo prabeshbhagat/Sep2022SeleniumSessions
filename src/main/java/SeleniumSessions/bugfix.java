@@ -6,6 +6,7 @@ public class bugfix {
 		// TODO Auto-generated method stub
 		
 		System.out.println("Bugfix");
+		System.out.println("Bugfix2");
 
 	}
 
