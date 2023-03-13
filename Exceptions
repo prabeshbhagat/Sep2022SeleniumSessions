@@ -13,6 +13,13 @@ org.openqa.selenium.InvalidSelectorException wrong xpath
  <g fill="#2874F1" fill-rule="evenodd">...</g> is not clickable at point (553, 27).
   Other element would receive the click: <svg width="20" height="20" viewBox="0 0 17 18"
    class="" xmlns="http://www.w3.org/2000/svg">...</svg>
+   
+   
+   
+org.openqa.selenium.TimeoutException: Expected condition failed:
+ waiting for presence of element located by: By.id: input-email 
+ (tried for 10 second(s) with 500 milliseconds interval)
+	
  
  
  
