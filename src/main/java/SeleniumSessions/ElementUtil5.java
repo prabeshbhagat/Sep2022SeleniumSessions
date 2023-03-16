@@ -4,12 +4,19 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.NoAlertPresentException;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ElementUtil5 {
@@ -186,8 +193,9 @@ public class ElementUtil5 {
 		}
 
 	}
-	
-	//*******************************Actions Class*************************************
+
+	// *******************************Actions
+	// Class*************************************
 
 	public void selectSubMenu(String htmlTag, String parentMenu, String childMenu) throws InterruptedException {
 
@@ -205,23 +213,229 @@ public class ElementUtil5 {
 		doClick(childMenuLocator);
 
 	}
-	
-	
-	public  void doActionsSendKeys(By locator,String value) {
+
+	public void doActionsSendKeys(By locator, String value) {
 		Actions act = new Actions(driver);
 		act.sendKeys(getElement(locator), value).build().perform();
 	}
-	
-	public  void doActionsClick(By locator) {
-		Actions act = new Actions(driver); 
+
+	public void doActionsClick(By locator) {
+		Actions act = new Actions(driver);
 		act.click(getElement(locator)).build().perform();
 	}
-	
-	//*********************Waits utils*********************
-	
-	public  WebElement waitForElementPresence(By locator,int timeout) {
+
+	// *********************Waits utils*********************
+
+	public String waitForTitleContains(String titleFractionValue, int Timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeout));
+		if (wait.until(ExpectedConditions.titleContains("Register"))) {
+			return driver.getTitle();
+		} else {
+			System.out.println("Expected title is not visble...");
+			return null;
+		}
+	}
+
+	// An expectation for checking the title of a page.
+	public String waitForTitleIs(String titleVal, int Timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeout));
+		if (wait.until(ExpectedConditions.titleIs(titleVal))) {
+			return driver.getTitle();
+		} else {
+			System.out.println("Expected title is not visble...");
+			return null;
+		}
+	}
+
+	public String waitForURLContains(String urlFractionValue, int Timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeout));
+		if (wait.until(ExpectedConditions.urlContains(urlFractionValue))) {
+			return driver.getCurrentUrl();
+		} else {
+			System.out.println("Expected URL is not visble...");
+			return null;
+		}
+	}
+
+	public String waitForURLIS(String urlValue, int Timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(Timeout));
+		if (wait.until(ExpectedConditions.urlToBe(urlValue))) {
+			return driver.getCurrentUrl();
+		} else {
+			System.out.println("Expected URL is not visble...");
+			return null;
+		}
+	}
+
+	// FW
+	public Alert waitForAlertIsPresentAndSwitchWithFluentWait(int timeOut, int intervalTime) {
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(intervalTime)).ignoring(NoAlertPresentException.class)
+				.withMessage("Alert Not present on the page...");
+
+		return wait.until(ExpectedConditions.alertIsPresent());
+
+	}
+
+	// WW
+	public Alert waitForAlertIsPresentAndSwitch(int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.alertIsPresent());
+	}
+
+	public String getAlertText(int timeOut) {
+		return waitForAlertIsPresentAndSwitch(timeOut).getText();
+	}
+
+	public void acceptAlert(int timeOut) {
+		waitForAlertIsPresentAndSwitch(timeOut).accept();
+	}
+
+	public void dismissAlert(int timeOut) {
+		waitForAlertIsPresentAndSwitch(timeOut).dismiss();
+	}
+
+	public void alertSendkeys(int timeOut, String value) {
+		waitForAlertIsPresentAndSwitch(timeOut).sendKeys(value);
+		;
+	}
+
+	public void waitForFramePresentAndSwitch(int frameIndex, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameIndex));
+	}
+
+	public void waitForFramePresentAndSwitch(By frameLocator, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameLocator));
+	}
+
+	public void waitForFramePresentAndSwitch(WebElement frameElement, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(frameElement));
+	}
+
+	public void waitForFramePresentAndSwitch(String nameOrId, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(nameOrId));
+	}
+
+	/**
+	 * An expectation for checking that an element is present on the DOM of a page.
+	 * This does not necessarily mean that the element is visible.
+	 * 
+	 * @param locator
+	 * @param timeout
+	 * @return
+	 */
+	public WebElement waitForElementPresence(By locator, int timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 
+	/**
+	 * An expectation for checking that an element is present on the DOM of a page
+	 * and visible. Visibility means that the element is not only displayed but also
+	 * has a height and width that isgreater than 0.
+	 * 
+	 * @param locator
+	 * @param timeout
+	 * @return
+	 */
+	public WebElement waitForElementVisible(By locator, int timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+
+	/**
+	 * An expectation for checking that all elements present on the web page that
+	 * match the locatorare visible. Visibility means that the elements are not only
+	 * displayed but also have a heightand width that is greater than 0.
+	 * 
+	 * @param locator
+	 * @param timeOut default interval time 500 millisecs
+	 * @return
+	 */
+	public List<WebElement> waitForElementsVisible(By locator, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	}
+
+	/**
+	 * An expectation for checking that all elements present on the web page that
+	 * match the locator are visible. Visibility means that the elements are not
+	 * only displayed but also have a heightand width that is greater than 0.
+	 * 
+	 * @param locator
+	 * @param timeOut
+	 * @param interval time
+	 * @return
+	 */
+	public List<WebElement> waitForElementsVisible(By locator, int timeOut, long intervalTime) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(intervalTime));
+		return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	}
+
+	/**
+	 * An expectation for checking that there is at least one element present on a
+	 * web page.
+	 * 
+	 * @param locator
+	 * @param timeOut
+	 * @return
+	 */
+	public List<WebElement> waitForElementsPresence(By locator, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		return wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	}
+
+	/**
+	 * An expectation for checking an element is visible and enabled such that you
+	 * can click it.
+	 * 
+	 * @param locator
+	 * @param timeOut
+	 */
+	public void clickElementWhenReady(By locator, int timeOut) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
+		wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
+		;
+	}
+
+	/**
+	 * 
+	 * @param locator
+	 * @param timeOut
+	 * @param intervaltime
+	 * @return
+	 */
+	public WebElement waitForElementTobeVisibleWithFluentWait(By locator, int timeOut, int intervaltime) {
+
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(Duration.ofSeconds(timeOut))
+				.pollingEvery(Duration.ofSeconds(intervaltime)).ignoring(ElementNotInteractableException.class)
+				.ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class)
+				.withMessage("Element Not found on the page...");
+
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+	}
+
+	/**
+	 * 
+	 * @param locator
+	 * @param timeOut
+	 * @param intervaltime
+	 * @return the above waitForElementTobeVisibleWithFluentWait method and this
+	 *  method both are same but implementation is different
+	 */
+
+	public WebElement waitForElementTobeVisibleWithoutFluentWait(By locator, int timeOut, int intervaltime) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut), Duration.ofSeconds(intervaltime));
+		wait.ignoring(ElementNotInteractableException.class).ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class).withMessage("Element Not found on the page...");
+
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+	}
 }

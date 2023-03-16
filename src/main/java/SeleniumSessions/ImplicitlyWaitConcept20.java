@@ -16,8 +16,7 @@ public class ImplicitlyWaitConcept20 {
 		// Implicitly wait concept:Dynamic wait
 		// 10secs ---> 2 secs --> 8 secs will cancelled/ignored
 		// its only applied for WebElements
-		// it will be by default applied for all WebElemnts in the page once it is
-		// declared
+		// it will be by default applied for all WebElemnts in the page once it is declared
 		// not applicable for non WebElements: alerts,title,urls
 		// its a global wait
 
@@ -25,7 +24,7 @@ public class ImplicitlyWaitConcept20 {
 		opt.addArguments("--remote-allow-origins=*");
 
 		WebDriver driver = new ChromeDriver(opt);
-		//Int Qu diff bet Sel 3 & 4
+		//Int Question diff bet Sel 3 & 4 in terms of wait
 		// Selenium 3.X
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
@@ -36,20 +35,20 @@ public class ImplicitlyWaitConcept20 {
 		WebElement e1 = driver.findElement(By.linkText("iMac"));
 		System.out.println(e1.getAttribute("href"));
 		
-		//if the ele is not found within 10 secs it throw exception
+		//if the ele is not found within 10 secs it will throw exception
 		//if the ele is found in 2secs it will ignore 8 secs.
 		//e2
 		//e3
 		//e4
 		
 		//for login page we need wait of 20 secs
-		//the imp wait will be overwidden to 20 secs for all webelements
+		//the imp wait below will be overwidden to 20 secs for all webelements
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		
 		//problem :anytime we need to change it will be applicable for all ele 
-		//override again & again
+		//override again & again to change time
 		//eg- for homepage we want 10 secs wait //than for login page we want 20 secs that time it will be overiiden to 20 secs
-		//oce declred applicable for all
+		//once declared applicable for all
 		
 	}
 

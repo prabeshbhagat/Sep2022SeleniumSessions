@@ -17,10 +17,11 @@ public class ExplicitWaitConcept20 {
 	public static void main(String[] args) {
 
 		// Explicitly Wait
-		//// Its is not a gobal wait
+		// Its is not a global wait
 		// can be applied for specfic element
+		//can be used for non web elements like urls,title,alerts
 
-		// WebDriverWAit(c)--extends---->fluent wait(c)--implement-->wait(I) until()
+		// WebDriverWait (c)--extends---->fluent wait(c)--implement-->wait(I) until()
 		ChromeOptions opt = new ChromeOptions();
 		opt.addArguments("--remote-allow-origins=*");
 
@@ -50,6 +51,14 @@ public class ExplicitWaitConcept20 {
 		return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	}
 	
+	
+	//An expectation for checking that an element is present on the DOM of a page and visible.
+	//Visibility means that the element is not only displayed but also has a height and width that isgreater than 0.
+	public static WebElement waitForElementVisible(By locator,int timeout) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeout));
+		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+	}
+	 
 	public static WebElement getElement(By locator) {
 		return driver.findElement(locator);
 	}

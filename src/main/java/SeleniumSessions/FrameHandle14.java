@@ -8,6 +8,7 @@ public class FrameHandle14 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		//frame is a Webelement
 		WebDriver driver = new ChromeDriver();
 		
 		driver.get("http://www.londonfreelance.org/courses/frames/index.html");
@@ -25,6 +26,7 @@ public class FrameHandle14 {
 		System.out.println(header);
 		
 		driver.switchTo().defaultContent();
+		
 
 	}
 
