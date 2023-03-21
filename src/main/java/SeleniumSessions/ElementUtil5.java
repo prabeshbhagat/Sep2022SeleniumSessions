@@ -7,6 +7,7 @@ import java.util.List;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -426,7 +427,7 @@ public class ElementUtil5 {
 	 * @param timeOut
 	 * @param intervaltime
 	 * @return the above waitForElementTobeVisibleWithFluentWait method and this
-	 *  method both are same but implementation is different
+	 *         method both are same but implementation is different
 	 */
 
 	public WebElement waitForElementTobeVisibleWithoutFluentWait(By locator, int timeOut, int intervaltime) {
@@ -436,6 +437,74 @@ public class ElementUtil5 {
 				.ignoring(StaleElementReferenceException.class).withMessage("Element Not found on the page...");
 
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+
+	}
+
+	// ******************Custom Wait*******************///
+
+	public WebElement retryingElement(By locator, int timeOut) {
+		WebElement element = null;
+		int attempts = 0;
+		while (attempts < timeOut) {
+			try {
+				element = getElement(locator);
+				System.out.println("Element is found in attempt " + attempts);
+				break;
+			} catch (NoSuchElementException e) {
+				System.out.println("element is not found in attempt :" + attempts + " for " + locator);
+				TiemUtil23.applyWait(500);
+			}
+
+			attempts++;
+		}
+		if (element == null) {
+
+			System.out.println(
+					"element not found tried for: " + timeOut + " Secs " + " tried with the interval of 0.5 sec");
+			throw new FrameworkExeption4("TimeOutException");
+		}
+		return element;
+	}
+
+	public WebElement retryingElement(By locator, int timeOut, int intervalTime) {
+		WebElement element = null;
+		int attempts = 0;
+		while (attempts < timeOut) {
+			try {
+				element = getElement(locator);
+				System.out.println("Element is found in attempt " + attempts);
+				break;
+			} catch (NoSuchElementException e) {
+				System.out.println("element is not found in attempt :" + attempts + " for " + locator);
+				TiemUtil23.applyWait(intervalTime);
+				// instead of Thread.sleep we use Time util as it look ugly here
+			}
+
+			attempts++;
+		}
+		if (element == null) {
+
+			System.out.println("element not found tried for: " + timeOut + " Secs " + " tried with the interval of "
+					+ intervalTime + " sec");
+			throw new FrameworkExeption4("TimeOutException");
+		}
+		return element;
+	}
+
+	// waitForPageLoad using JS
+	public void waitForPageLoad(int timeOut) {
+
+		long endTime = System.currentTimeMillis() + timeOut;
+
+		while (System.currentTimeMillis() < endTime) {
+			JavascriptExecutor js = (JavascriptExecutor) driver;
+			String pageState = js.executeScript("return document.readyState").toString();
+			System.out.println(pageState);
+			if (pageState.equals("complete")) {
+				System.out.println("Page Dom is fully loaded ...");
+				break;
+			}
+		}
 
 	}
 }

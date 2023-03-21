@@ -1,4 +1,4 @@
-
+flaky test cases
 >>JqueryDropDownConcept9 
 
 NoAlertPresentException: for alerts when there is no alerts and we try to work on lasert
@@ -60,3 +60,9 @@ Build info: version: '4.8.1', revision: '8ebccac989'
   
   Exception in thread "main" org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element is not clickable at point (113, 2088)
   (Session info: chrome=111.0.5563.65)
+  
+  
+  Exception in thread "main" org.openqa.selenium.WebDriverException: unknown error: net::ERR_NAME_NOT_RESOLVED (wrong url)
+  
+  
+  org.openqa.selenium.UnhandledAlertException: unexpected alert open: {Alert text : Hi This is an alert}

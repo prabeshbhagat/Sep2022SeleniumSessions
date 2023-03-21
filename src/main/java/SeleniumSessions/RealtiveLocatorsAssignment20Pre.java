@@ -23,6 +23,8 @@ public class RealtiveLocatorsAssignment20Pre {
 		String leftValue=driver.findElement(with(By.tagName("a")).below(ele)).getText();
 		System.out.println(leftValue);
 		
+		driver.navigate().forward();
+		
 		
 		
 		
