@@ -17,25 +17,33 @@ public class CalendarHandling25 {
 	//feb
 	//30 days-November, April, June, and September.--4
 	//31 days--January, March, May, July, August, October, and December.--7
-
+	
+	//go ibibo cal secnario find disbale ,enabled,selected,outside
+	//total disabled--[div.DayPicker-Month div.DayPicker-Day--disabled] including outside
+	//only disabled excluding outside-[div.DayPicker-Month div.DayPicker-Day--disabled:not(.DayPicker-Day--outside)]
+	//selcted --div.DayPicker-Month div.DayPicker-Day--selected
+	//selcted --div.DayPicker-Day--selected
+	//only enabled--div.DayPicker-Day:not(.DayPicker-Day--outside):not(.DayPicker-Day--disabled)
 	public static void main(String[] args) {
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
-
-		driver = new ChromeDriver(opt);
+//		ChromeOptions opt = new ChromeOptions();
+//		opt.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		
+		driver = new ChromeDriver();
 		driver.get("http://seleniumpractise.blogspot.com/2016/08/how-to-handle-calendar-in-selenium.html");
 		WebElement datepicker = driver.findElement(By.id("datepicker"));
 		datepicker.click();
 
-//		WebElement date = driver.findElement(By.xpath("//a[text()='20']"));
-//		date.click();
-
-//		String actDateMonth = driver.findElement(By.cssSelector("div.ui-datepicker-title")).getText();
-//		while (!actDateMonth.equalsIgnoreCase("c")) {
-//			driver.findElement(By.linkText("Next")).click();
-//			actDateMonth = driver.findElement(By.cssSelector("div.ui-datepicker-title")).getText();
-//			System.out.println(actDateMonth);
-//		}
+		WebElement date = driver.findElement(By.xpath("//a[text()='20']"));
+		date.click();
+		
+		String actDateMonth = driver.findElement(By.cssSelector("div.ui-datepicker-title")).getText();
+		System.out.println("----"+actDateMonth);
+		while (!actDateMonth.equalsIgnoreCase("c")) {
+			driver.findElement(By.linkText("Next")).click();
+		actDateMonth = driver.findElement(By.cssSelector("div.ui-datepicker-title")).getText();
+		System.out.println(actDateMonth);
+		}
 //		selectDate("26");
 
 //		selectDate("26");
@@ -44,7 +52,7 @@ public class CalendarHandling25 {
 //		selectFuturedate("selectFuturedate","26");
 //		selectFuturedate("March 2025","26");
 //		selectFuturedate("February 2025", "35");
-		selectPreviousdate("April 2022", "31");
+//		selectPreviousdate("April 2022", "30");
 	}
 	
 	//pseudo code for 30 t & 31st of month 

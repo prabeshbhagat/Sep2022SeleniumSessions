@@ -16,9 +16,11 @@ public class WaitForWebElementsList21 {
 
 	public static void main(String[] args) {
 
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
-		driver = new ChromeDriver(opt);
+//		ChromeOptions opt = new ChromeOptions();
+//		opt.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		driver = new ChromeDriver();
+		//driver = new ChromeDriver(opt);
 
 		driver.get("https://www.freshworks.com/");
 		By footer = By.cssSelector("ul.eQNriT a");

@@ -11,22 +11,24 @@ public class GoogleSearch8 {
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException {
-
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://www.google.co.in/");
 
 //		driver.findElement(By.name("q")).sendKeys("irctc");
 //		Thread.sleep(3000);
-//		List<WebElement> suggList = driver.findElements(By.xpath("//div[@class='wM6W7d']/span"));
+//	List<WebElement> suggList = driver.findElements(By.xpath("//div[@class='wM6W7d']/span"));
 //
 //		for (WebElement e : suggList) {
 //			System.out.println(e.getText());
-//			if (e.getText().equals("irctc pnr")) {
+//			if (e.getText().equals("irctc pnr status")) {
 //				e.click();
 //				break;
 //			}
 //
 //		}
+		
 		By searchLocator = By.name("q");
 		By listLocator = By.xpath("//div[@class='wM6W7d']/span");
 		googleSearchAndClick(searchLocator, "irctc", listLocator, "irctc pnr");

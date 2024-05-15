@@ -25,7 +25,7 @@ public class ExceptionWithFEAndFEs7 {
 		// findElements//A list of all matching WebElements, or an empty list if nothing
 		// matches
 		// findElement//
-		List<WebElement> linksList = driver.findElements(By.xpath("////div[@@@class='list-group']/a0"));
+		List<WebElement> linksList = driver.findElements(By.xpath("//div[@class='list-group']/a"));
 		System.out.println(linksList.size());// empty list
 		int count = 0;
 

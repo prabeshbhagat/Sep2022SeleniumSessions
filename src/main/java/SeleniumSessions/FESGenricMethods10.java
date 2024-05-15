@@ -14,6 +14,7 @@ public class FESGenricMethods10 {
 	public static void main(String[] args) {
 
 		driver = new ChromeDriver();
+		driver.findElement(null);
 		driver.get("https://www.freshworks.com/");
 		By footerLinks = By.xpath("//div[contains(@class,'footer-left-section')]//a");
 		int actFooterLinkCount=totalElementsCount(footerLinks);

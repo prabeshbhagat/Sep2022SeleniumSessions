@@ -80,6 +80,8 @@ public class JavaScriptUtil24 {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 	}
+	
+	
 
 	public void scrollPageDown(String height) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;

@@ -13,6 +13,7 @@ public class WebtableColoumnText17 {
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver", "./src/test/resources/Drivers/chromedriver.exe");
 		driver = new ChromeDriver();
 
 		driver.get("https://classic.freecrm.com/index.html");

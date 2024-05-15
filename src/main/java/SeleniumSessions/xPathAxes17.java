@@ -14,7 +14,7 @@ public class xPathAxes17 {
 
 		// case 2:Child to parent traversing
 		// //input[@id='username']/../../../../../../../../../..
-
+//descendant
 		// how to move to immediate parent
 		// input[@id='username']/parent::div
 		// input[@id='username']/..

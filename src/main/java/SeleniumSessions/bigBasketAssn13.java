@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 
 public class bigBasketAssn13 {
@@ -13,16 +14,24 @@ public class bigBasketAssn13 {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-
-		driver = new ChromeDriver();
+		//By by=By.xpath("//a[@qa='categoryDD']");
+		
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		driver = new ChromeDriver(co);
 		driver.get("https://www.bigbasket.com/");
-
-		WebElement shopByLoc = driver.findElement(By.xpath("//a[@qa='categoryDD']"));
-
+		
+		By parentMenu=By.id("headlessui-menu-button-:R5bab6:");
+		WebElement shopByLoc = driver.findElement(parentMenu);
+		shopByLoc.click();
 		Actions act = new Actions(driver);
-		act.moveToElement(shopByLoc).build().perform();
-
-		List<WebElement> categoryListL1 = driver.findElements(By.xpath("//ul[@id='navBarMegaNav']//a"));
+		//act.moveToElement(shopByLoc).build().perform();
+		
+		
+		
+		List<WebElement> categoryListL1 = driver.findElements(By.xpath("((//nav[@class='jsx-1259984711 flex text-medium'])[2]//ul)[1]//li"));
 		List<WebElement> categoryListL2 = driver
 				.findElements(By.xpath("(//ul[contains(@class,'nav-pills')])[2]/li"));
 		List<WebElement> categoryListL3 = driver

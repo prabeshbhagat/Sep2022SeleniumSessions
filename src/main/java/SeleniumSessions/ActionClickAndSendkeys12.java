@@ -10,7 +10,8 @@ public class ActionClickAndSendkeys12 {
 	static WebDriver driver;
 
 	public static void main(String[] args) {
-
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 

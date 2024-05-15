@@ -16,10 +16,8 @@ public class ExplicitWaitForAlertUsingUtilty21 {
 
 	public static void main(String[] args) {
 
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
-
-		driver = new ChromeDriver(opt);
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		driver = new ChromeDriver();
 		driver.get("https://the-internet.herokuapp.com/javascript_alerts");
 		driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
 		waitForAlertIsPresentAndSwitch(10);

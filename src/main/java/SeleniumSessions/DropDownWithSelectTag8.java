@@ -6,18 +6,23 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class DropDownWithSelectTag8 {
 	static WebDriver driver;
 
 	public static void main(String[] args) throws InterruptedException {
 
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		//WebDriverManager.chromedriver().setup();
+		
 		driver = new ChromeDriver();
 		driver.get("https://www.orangehrm.com/orangehrm-30-day-trial/");
 
 		Thread.sleep(2000);
 
-		// WebElement dropDown = driver.findElement(By.id("Form_getForm_Country"));
-		// Select select = new Select(dropDown);
+		 WebElement dropDown = driver.findElement(By.id("Form_getForm_Country"));
+		 Select select = new Select(dropDown);
 
 		// select.selectByIndex(150);
 		// select.selectByVisibleText("Andorra");
@@ -25,7 +30,8 @@ public class DropDownWithSelectTag8 {
 
 		// 30:00
 		By country = By.id("Form_getForm_Country");
-		// doSelectByIndex(country,96);
+		doSelectDropDownByIndex(country,96);
+		Thread.sleep(2000);
 		doSelectByVisibleText(country, "Albania");
 		Thread.sleep(2000);
 		doSelectByValue(country, "India");

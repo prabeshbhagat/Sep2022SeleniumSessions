@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class WaitForPageLoadConcept22 {
 
 	static WebDriver driver;
@@ -27,11 +29,11 @@ public class WaitForPageLoadConcept22 {
 	}
 
 	public static void main(String[] args) {
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
-
-		driver = new ChromeDriver(opt);
-		driver.get("https://naveenautomationlabss.com/opencart/index.php?route=account/login");
+//		ChromeOptions opt = new ChromeOptions();
+//		opt.addArguments("--remote-allow-origins=*");
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 		waitForPageLoad(10);
 	}
 

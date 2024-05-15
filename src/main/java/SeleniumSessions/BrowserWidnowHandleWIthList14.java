@@ -9,11 +9,17 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BrowserWidnowHandleWIthList14 {
 
 	public static void main(String[] args) throws InterruptedException {
-
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		//WebDriverManager.chromedriver().setup();
+		//ChromeOptions co= new ChromeOptions();
+		//co.addArguments("--remote-allow-origins=*");
+		//WebDriver driver = new ChromeDriver(co);
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.orangehrm.com/orangehrm-30-day-trial/");
 

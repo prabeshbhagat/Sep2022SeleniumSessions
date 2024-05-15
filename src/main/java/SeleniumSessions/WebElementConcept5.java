@@ -50,8 +50,11 @@ public class WebElementConcept5 {
 //		By psswd=By.id("input-password");
 //		doSendkeys(emailID,"test@test.com");
 //		doSendkeys(psswd,"test1234");
+		
+		
+		
 //		
-		//6th approach: BY locator +genric Function getElemnet and
+		//6th approach: BY locator +generic Function getElemnet and
 		//action methods in Util class
 		
 		By emailID=By.id("input-email");

@@ -14,10 +14,8 @@ public class ExplictWaitFrame21 {
 	static WebDriver driver;
 
 	public static void main(String[] args) {
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
-
-		driver = new ChromeDriver(opt);
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		driver = new ChromeDriver();
 		
 		driver.get("http://www.londonfreelance.org/courses/frames/index.html");
 		WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));

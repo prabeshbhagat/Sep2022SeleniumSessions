@@ -3,13 +3,18 @@ package SeleniumSessions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class FrameHandle14 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//frame is a Webelement
-		WebDriver driver = new ChromeDriver();
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
 		
 		driver.get("http://www.londonfreelance.org/courses/frames/index.html");
 		

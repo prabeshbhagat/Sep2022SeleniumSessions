@@ -4,9 +4,12 @@ import java.net.URL;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BrowserUtil4 {
 	WebDriver driver;
@@ -16,7 +19,13 @@ public class BrowserUtil4 {
 		//driver = null;
 		switch (BrowserName.toLowerCase()) {
 		case "chrome":
-			driver = new ChromeDriver();
+//			WebDriverManager.chromedriver().setup();
+//			driver = new ChromeDriver();
+			System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+			//WebDriverManager.chromedriver().setup();
+			ChromeOptions co= new ChromeOptions();
+			co.addArguments("--remote-allow-origins=*");
+			driver = new ChromeDriver(co);
 			break;
 
 		case "firefox":

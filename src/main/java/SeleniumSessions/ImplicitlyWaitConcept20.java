@@ -20,10 +20,10 @@ public class ImplicitlyWaitConcept20 {
 		// not applicable for non WebElements: alerts,title,urls
 		// its a global wait
 
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		
 
-		WebDriver driver = new ChromeDriver(opt);
+		WebDriver driver = new ChromeDriver();
 		//Int Question diff bet Sel 3 & 4 in terms of wait
 		// Selenium 3.X
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -47,7 +47,8 @@ public class ImplicitlyWaitConcept20 {
 		
 		//problem :anytime we need to change it will be applicable for all ele 
 		//override again & again to change time
-		//eg- for homepage we want 10 secs wait //than for login page we want 20 secs that time it will be overiiden to 20 secs
+		//eg- for homepage we want 10 secs wait //than for search page we want 20 
+		//secs that time it will be overiden to 20 secs
 		//once declared applicable for all
 		
 	}

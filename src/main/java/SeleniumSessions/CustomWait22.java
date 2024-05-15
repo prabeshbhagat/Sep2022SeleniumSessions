@@ -10,9 +10,9 @@ import org.openqa.selenium.chrome.ChromeOptions;
 public class CustomWait22 {
 
 	// instead of Null pointer exception we are throwing our own custom exception in
-	// line 44
-	// to avoid null pointer exception
-	// selenium performs action once the page is fully loaded
+	//line 44
+	//to avoid null pointer exception
+	//selenium performs action once the page is fully loaded
 	//sometime the page loading completed but some elements are still loading 
 	//https://developer.mozilla.org/en-US/docs/Web/API/Document/readyState
 	//Document.readyState
@@ -81,10 +81,8 @@ public class CustomWait22 {
 
 	public static void main(String[] args) {
 
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
-
-		driver = new ChromeDriver(opt);
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		driver = new ChromeDriver();
 		driver.get("https://classic.freecrm.com/register/");
 		By firstname = By.name("first_name ");
 		// retryingElement(firstname, 20).sendKeys("Prabesh");

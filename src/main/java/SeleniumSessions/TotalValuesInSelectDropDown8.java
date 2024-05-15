@@ -13,6 +13,7 @@ public class TotalValuesInSelectDropDown8 {
 
 	public static void main(String[] args) throws InterruptedException {
 
+	
 		driver = new ChromeDriver();
 		driver.get("https://www.orangehrm.com/orangehrm-30-day-trial/");
 		Thread.sleep(2000);

@@ -15,10 +15,10 @@ public class ExplicitWaitForTitleUrlAlertUsingUtility21 {
 
 	public static void main(String[] args) {
 
-		ChromeOptions opt = new ChromeOptions();
-		opt.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		driver = new ChromeDriver();
 
-		driver = new ChromeDriver(opt);
+
 		driver.get("https://naveenautomationlabs.com/opencart/index.php?route=account/login");
 
 		driver.findElement(By.linkText("Register")).click();

@@ -22,13 +22,10 @@ public class FrameHandleWithActionsClass15{
 		Thread.sleep(2000);
 		List<WebElement> noOFFrames=driver.findElements(By.tagName("frame"));
 		System.out.println(noOFFrames.size());
-		
 		driver.switchTo().frame("mainpanel");
-		
 		Actions act= new Actions(driver);
 		act.moveToElement(driver.findElement(By.linkText("CONTACTS"))).build().perform();
 		act.click(driver.findElement(By.linkText("New Contact"))).build().perform();
-		
 		driver.findElement(By.name("first_name")).sendKeys("Test 123");
 		
 

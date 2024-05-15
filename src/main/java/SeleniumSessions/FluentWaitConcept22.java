@@ -36,7 +36,6 @@ public class FluentWaitConcept22 {
 		
 		wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 		
-		
 	}
 
 }
