@@ -12,7 +12,7 @@ public class AuthPopUp13 {
 		// TODO Auto-generated method stub
 		//driver = new ChromeDriver();
 		
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\pb610335\\Downloads\\chromedriver-win64\\chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\prabesh.bhagat\\Downloads\\chromedriver-win64\\chromedriver-win64\\chromedriver.exe");
 		driver = new ChromeDriver();
 		// driver.get("https://the-internet.herokuapp.com/basic_auth");
 		// driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
